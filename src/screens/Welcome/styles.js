@@ -1,27 +1,14 @@
 const welcomeStyles = () => {
     return {
         container: {
-            backgroundColor: '#fff',
+            backgroundColor: '#FFF',
             alignItems: 'center',
-            height: '100vh',
-            padding: 20,
+            height: '100%',
+            width: '100%',
+            padding: 50,
         },
-        welcome: {
-            fontSize: 25,
-            fontWeight: 'bold',
-            alignSelf: 'center',
-        },
-        button: {
-            width: 200,
-            height: 30,
-            borderRadius: 3,
-            margin: 10,
-            backgroundColor: 'blue',
-            justifyContent: 'center',
-            alignItems: 'center'
-        },
-        buttonText: {
-            color: 'white',
+        actions: {
+            padding: 50
         }
     }
 };
