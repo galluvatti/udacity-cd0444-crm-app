@@ -16,6 +16,23 @@ const welcomeStyles = () => {
             marginTop: 15,
             marginBottom: 15
         },
+        dropdown: {
+           margin: 16,
+           height: 50,
+            width:200,
+           borderBottomColor: 'gray',
+           borderBottomWidth: 0.5,
+           placeholderStyle: {
+               fontSize: 16,
+           },
+            selectedTextStyle: {
+                fontSize: 16,
+            },
+            inputSearchStyle: {
+                height: 40,
+                fontSize: 16,
+            },
+        },
         actions: {
             padding: 50
         }

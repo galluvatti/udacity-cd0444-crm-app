@@ -1,5 +1,6 @@
 import {useDispatch, useSelector} from 'react-redux'
 import * as actions from './reducers'
+import {useEffect} from "react";
 
 export const useUpdateFields = (customerID) => {
     const dispatch = useDispatch()
@@ -28,4 +29,13 @@ export const useNewCustomer = () => {
             dispatch(actions.createCustomer())
         }
     }
+}
+
+export const useListCustomers = () => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(actions.loadCustomers())
+    }, [dispatch])
+
+    return useSelector(state => state.customer.list.customers)
 }

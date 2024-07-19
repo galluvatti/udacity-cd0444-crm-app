@@ -11,7 +11,7 @@ export default function Regions() {
     const renderRegionButton = (region) => {
         return (
             <Button
-                onPress={() => navigate('Region Detalils', {regionId: region.item.id})}
+                onPress={() => navigate('List Customers by Region', {regionId: region.item.id})}
                 text={region.item.name}
                 disabled={false}/>
         )
@@ -25,7 +25,7 @@ export default function Regions() {
                     text="Create Customer"
                     disabled={false}/>
                 <Text>
-                    List of Regions
+                    OR
                 </Text>
                 <Text>
                     Select a Region:

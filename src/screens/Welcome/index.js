@@ -3,14 +3,11 @@ import {SafeAreaView, StyleSheet, View} from 'react-native';
 import welcomeStyles from './styles';
 import Title from "../../component/Title";
 import Button from "../../component/Button";
+import {clear} from "../../features/customer/utilities/async_storage";
 
 export default function Welcome() {
     const styles = StyleSheet.create(welcomeStyles())
     const {navigate} = useNavigation()
-
-    function clearStorage() {
-        //TODO Implement
-    }
 
     return (
         <SafeAreaView>
@@ -24,7 +21,7 @@ export default function Welcome() {
                         disabled={false}
                     />
                     <Button
-                        onPress={() => clearStorage()}
+                        onPress={() => clear()}
                         text='Clear Storage...'
                         disabled={false}
                     />

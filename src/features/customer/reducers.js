@@ -12,16 +12,14 @@ const initialState = {
         fields: {
             first_name: null,
             last_name: null,
-            active: false
+            active: false,
+            region: null
         },
     },
     create: {
         status: PENDING,
     },
     edit: {
-        status: PENDING,
-    },
-    delete: {
         status: PENDING,
     },
     load: {
@@ -44,8 +42,16 @@ const reducers = {
         state.create.status = ERROR
         state.error.message = payload
     },
-    createCustomerReset: (state) => {
-        state.create = initialState.create
+    loadCustomers: (state) => {
+        state.load.status = REQUESTING
+    },
+    loadCustomersResult: (state, { payload }) => {
+        state.load.status = SUCCESS
+        state.list.customers = payload
+    },
+    loadCustomersError: (state, { payload }) => {
+        state.load.status = ERROR
+        state.error.message = payload
     },
     setFormField: (state, {payload}) => {
         const current = state.form.fields
@@ -70,7 +76,9 @@ export const {
     createCustomer,
     createCustomerResult,
     createCustomerError,
-    createCustomerReset,
+    loadCustomers,
+    loadCustomersResult,
+    loadCustomersError,
     setFormField
 } = slice.actions
 

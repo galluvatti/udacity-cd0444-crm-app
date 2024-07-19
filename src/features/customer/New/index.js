@@ -1,21 +1,35 @@
 import formStyles from './styles';
-import React from 'react'
+import React, {useState} from 'react'
 import {StyleSheet, Switch, Text, TextInput, View} from 'react-native';
 import {useNewCustomer, useUpdateFields} from "../hooks";
 import Title from "../../../component/Title";
 import Button from "../../../component/Button";
 import {Dropdown} from "react-native-element-dropdown";
+import {regions} from "../../../utils/common";
+import {useNavigation} from "@react-navigation/native";
 
-const Form = ({disabled = false}) => {
+const Form = () => {
+    const navigation = useNavigation()
     const styles = StyleSheet.create(formStyles())
     const {fields, setFormField} = useUpdateFields()
     const {onSubmit} = useNewCustomer()
+    const onSaveCustomer = ()=> {
+        onSubmit()
+        navigation.navigate("List of Regions")
+    }
+    const [regionValue, setRegionValue] = useState(null);
 
     const {
         first_name,
         last_name,
         active
     } = fields
+
+    const onChange = (item) => {
+        console.log(item)
+        setRegionValue(item.id)
+        setFormField('region', item.id)
+    }
 
     return (
         <View style={styles.container}>
@@ -41,7 +55,19 @@ const Form = ({disabled = false}) => {
                 value={active}
             />
             <Text>Region:</Text>
-            <Button text={"Submit"} onPress={onSubmit}></Button>
+            <Dropdown
+                style={styles.dropdown}
+                placeholderStyle={styles.dropdown.placeholderStyle}
+                selectedTextStyle={styles.dropdown.selectedTextStyle}
+                inputSearchStyle={styles.dropdown.inputSearchStyle}
+                data={regions}
+                placeholder={"Select a region..."}
+                labelField={"name"}
+                valueField={"id"}
+                value={regionValue}
+                onChange={onChange}
+            />
+            <Button text={"Save Customer"} onPress={onSaveCustomer}></Button>
         </View>
     )
 }
