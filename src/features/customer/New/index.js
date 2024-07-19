@@ -1,10 +1,11 @@
 import Form from "../common/Form";
-import {useNewCustomer} from "../hooks";
+import {useCreateCustomerStatus, useCreateCustomer} from "../hooks";
 
 const New = () => {
-   const {onSubmit} = useNewCustomer()
+   const {onSubmit} = useCreateCustomer()
+   const status = useCreateCustomerStatus()
    return (
-       <Form onSubmit={onSubmit} customerID={null}></Form>
+       <Form onSubmit={onSubmit} customerID={null} status={status}></Form>
    )
 }
 
