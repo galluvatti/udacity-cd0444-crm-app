@@ -11,7 +11,7 @@ export const save = async (customers) => {
 export const load = async () => {
     console.log('LOADING FROM ASYNC STORAGE ::: ', key)
     const raw = await AsyncStorage.getItem(key)
-    return raw? JSON.parse(raw) : {}
+    return raw? JSON.parse(raw) : []
 }
 
 export const clear = async () => {

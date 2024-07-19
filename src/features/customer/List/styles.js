@@ -1,4 +1,4 @@
-const welcomeStyles = () => {
+const listCustomersStyles = () => {
     return {
         container: {
             backgroundColor: '#FFF',
@@ -13,4 +13,4 @@ const welcomeStyles = () => {
     }
 };
 
-export default welcomeStyles
+export default listCustomersStyles

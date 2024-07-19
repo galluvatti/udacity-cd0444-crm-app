@@ -4,6 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import WelcomeScreen from '../screens/Welcome'
 import Regions from '../screens/regions/List'
 import NewCustomer from '../screens/customers/New'
+import EditCustomer from '../screens/customers/Edit'
 import CustomerListByRegion from '../screens/customers/ListByRegion'
 
 const Stack = createNativeStackNavigator()
@@ -23,6 +24,10 @@ const Navigation = () => {
                 <Stack.Screen
                     name='Create Customer'
                     component={NewCustomer}
+                />
+                <Stack.Screen
+                    name='Edit Customer'
+                    component={EditCustomer}
                 />
                 <Stack.Screen
                     name='List Customers by Region'

@@ -5,12 +5,13 @@ import {useEffect} from "react";
 export const useUpdateFields = (customerID) => {
     const dispatch = useDispatch()
     let fields;
-
+    console.log("useUpdateFields" + customerID)
     if (customerID) {
         fields = useSelector(state => state.customer.list.customers.find(c => c.id === customerID))
     }
-    fields = useSelector(state => state.customer.form.fields)
-
+    else {
+        fields = useSelector(state => state.customer.form.fields)
+    }
     return {
         fields,
         setFormField: (field, value) => {
@@ -27,6 +28,17 @@ export const useNewCustomer = () => {
         onSubmit: () => {
             console.log('Dispatching CREATE_CUSTOMER action')
             dispatch(actions.createCustomer())
+        }
+    }
+}
+
+export const useEditCustomer = (customerID) => {
+    const dispatch = useDispatch()
+
+    return {
+        onSubmit: () => {
+            console.log('Dispatching EDIT_CUSTOMER action')
+            dispatch(actions.editCustomer(customerID))
         }
     }
 }

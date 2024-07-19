@@ -1,12 +1,14 @@
 import React from 'react'
-import {Button, FlatList, Text, View} from 'react-native'
+import {Button, FlatList, StyleSheet, Text, View} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 import Row from './row'
+import formStyles from "./styles";
 
 const List = ({customers}) => {
     const { navigate } = useNavigation()
+    const styles = StyleSheet.create(formStyles())
     return (
-        <View>
+        <View  style={styles.container}>
             <Text>Customer List</Text>
 
             {(customers && customers.length > 0) ? (

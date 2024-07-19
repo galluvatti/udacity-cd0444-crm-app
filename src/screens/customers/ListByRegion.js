@@ -5,10 +5,9 @@ import {useListCustomers} from "../../features/customer/hooks";
 const ListCustomerByRegionScreen = ({route}) => {
     const {regionId} = route.params
     const customers = useListCustomers()
-    const customerByRegion = customers.filter(c => c.region === regionId)
     return (
         <SafeAreaView>
-            <List customers={customerByRegion}/>
+            <List customers={customers.filter(c => c.region === regionId)}/>
         </SafeAreaView>
     );
 }
