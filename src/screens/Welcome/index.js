@@ -19,7 +19,7 @@ export default function Welcome() {
 
                 <View style={styles.actions}>
                     <Button
-                        onPress={() => navigate('Welcome')}//FIXME
+                        onPress={() => navigate('List of Regions')}
                         text='Click to continue'
                         disabled={false}
                     />
