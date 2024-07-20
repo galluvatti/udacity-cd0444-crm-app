@@ -3,9 +3,9 @@ import {useEditCustomer} from "../hooks";
 import Form from "../common/Form";
 
 const Edit = ({customerID}) => {
-    const onSubmit = useEditCustomer(customerID)
+    const {status, onSubmit} = useEditCustomer(customerID)
     return (
-        <Form onSubmit={onSubmit} customerID={customerID}></Form>
+        <Form onSubmit={onSubmit} customerID={customerID} status={status}></Form>
     )
 }
 

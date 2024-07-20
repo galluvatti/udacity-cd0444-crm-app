@@ -17,9 +17,6 @@ export function* takeCreateCustomer() {
             ...fields,
         }
 
-        // pretend call to API
-        yield delay(500)
-
         const result = [customer, ...customers]
         console.log(`result${result}`)
         yield save(result)

@@ -4,10 +4,10 @@ import {useUpdateFields} from "../hooks";
 import Title from "../../../component/Title";
 import Button from "../../../component/Button";
 import {Dropdown} from "react-native-element-dropdown";
-import {regions} from "../../../utils/common";
+import {INPROGRESS, PENDING, regions} from "../../../utils/common";
 import {useNavigation} from "@react-navigation/native";
 
-const Form = ({onSubmit, customerID}) => {
+const Form = ({onSubmit, customerID, status}) => {
     const navigation = useNavigation()
     const styles = StyleSheet.create(formStyles())
     const {fields, setFormField} = useUpdateFields(customerID)
@@ -56,7 +56,11 @@ const Form = ({onSubmit, customerID}) => {
                     setFormField('region', item.id)
                 }}
             />
-            <Button text={"Save Customer"} onPress={onSaveCustomer}></Button>
+            <Button
+                text={"Save Customer"}
+                onPress={onSaveCustomer}
+                disabled={status !== PENDING && status !== INPROGRESS}
+            ></Button>
         </View>
     )
 }

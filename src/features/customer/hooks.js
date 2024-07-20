@@ -1,27 +1,32 @@
 import {useDispatch, useSelector} from 'react-redux'
 import * as actions from './reducers'
 import {useEffect} from "react";
+import {INPROGRESS, PENDING} from "../../utils/common";
 
 export const useUpdateFields = (customerID) => {
     const dispatch = useDispatch()
-    let fields;
-    console.log("useUpdateFields" + customerID)
-    if (customerID) {
-        fields = useSelector(state => state.customer.list.customers.find(c => c.id === customerID))
-    }
-    else {
-        fields = useSelector(state => state.customer.form.fields)
-    }
+    const status = useSelector(state => state.customer.edit.status)
+    const fields = useSelector(state => state.customer.form.fields)
+
+    console.log("customer ID ::: ", customerID, status, customerID && status !== INPROGRESS)
+
+    useEffect(() => {
+        if (customerID && status === PENDING) {
+            dispatch(actions.setForm(customerID))
+        }
+    }, [customerID, status])
+
     return {
         fields,
         setFormField: (field, value) => {
             console.log(`Updating field ${field} to ${value}`)
-            return dispatch(actions.setFormField({ field, value }))
+
+            dispatch(actions.setFormField({ field, value }))
         },
     }
 }
 
-export const useNewCustomer = () => {
+export const useCreateCustomer = () => {
     const dispatch = useDispatch()
 
     return {
@@ -32,10 +37,16 @@ export const useNewCustomer = () => {
     }
 }
 
+export const useCreateCustomerStatus = () => {
+    return useSelector(state => state.customer.create.status)
+}
+
 export const useEditCustomer = (customerID) => {
     const dispatch = useDispatch()
+    const status = useEditCustomerStatus()
 
     return {
+        status,
         onSubmit: () => {
             console.log('Dispatching EDIT_CUSTOMER action')
             dispatch(actions.editCustomer(customerID))
@@ -43,11 +54,10 @@ export const useEditCustomer = (customerID) => {
     }
 }
 
-export const useListCustomers = () => {
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(actions.loadCustomers())
-    }, [dispatch])
+export const useEditCustomerStatus = () => {
+    return useSelector(state => state.customer.edit.status)
+}
 
+export const useListCustomers = () => {
     return useSelector(state => state.customer.list.customers)
 }
