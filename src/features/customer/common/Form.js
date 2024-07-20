@@ -6,7 +6,6 @@ import Button from "../../../component/Button";
 import {Dropdown} from "react-native-element-dropdown";
 import {INPROGRESS, PENDING, regions} from "../../../utils/common";
 import {useNavigation} from "@react-navigation/native";
-import {stat} from "@babel/core/lib/gensync-utils/fs";
 
 const Form = ({onSubmit, customerID, status}) => {
     const navigation = useNavigation()

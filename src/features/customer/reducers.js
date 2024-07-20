@@ -54,7 +54,7 @@ const reducers = {
         state.load.status = ERROR
         state.error.message = payload
     },
-    editCustomer: (state, { payload }) => {
+    editCustomer: (state) => {
         state.edit.status = REQUESTING
     },
     editCustomerResult: (state, { payload }) => {

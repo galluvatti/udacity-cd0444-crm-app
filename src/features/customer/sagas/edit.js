@@ -1,9 +1,9 @@
-import { all, put, select, takeLatest, delay } from 'redux-saga/effects'
+import {delay, put, select, takeLatest} from 'redux-saga/effects'
 import * as actions from '../reducers'
 import {save} from "../utilities/async_storage";
 
 export function* watchEditCustomer() {
-    yield takeLatest(actions.editCustomer.toString(), takeEditCustomer())
+    yield takeLatest(actions.editCustomer.toString(), takeEditCustomer)
 }
 
 export function* takeEditCustomer(action) {
@@ -22,9 +22,6 @@ export function* takeEditCustomer(action) {
             // return the new fields instead of the old ones
             return fields
         })
-
-        // pretend call to API
-        yield delay(500)
 
         yield save(result)
 
