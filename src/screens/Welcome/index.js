@@ -4,6 +4,7 @@ import welcomeStyles from './styles';
 import Title from "../../component/Title";
 import Button from "../../component/Button";
 import {clear} from "../../features/customer/utilities/async_storage";
+import ContactCustomer from "../../features/customer/ContactReminder";
 
 export default function Welcome() {
     const styles = StyleSheet.create(welcomeStyles())
@@ -25,6 +26,7 @@ export default function Welcome() {
                         text='Clear Storage...'
                         disabled={false}
                     />
+                <ContactCustomer/>
                 </View>
             </View>
         </SafeAreaView>

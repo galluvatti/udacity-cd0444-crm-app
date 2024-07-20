@@ -18,7 +18,6 @@ export function* takeCreateCustomer() {
         }
 
         const result = [customer, ...customers]
-        console.log(`result${result}`)
         yield save(result)
 
         yield put(actions.createCustomerResult(result))

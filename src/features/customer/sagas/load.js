@@ -10,9 +10,6 @@ export function* takeLoadCustomer() {
     console.log('Starting fetch request to API')
     try {
         const customers = yield load()
-        console.log(customers)
-        // pretend call to API
-        yield delay(500)
 
         yield put(actions.loadCustomersResult(customers))
     } catch (error) {
